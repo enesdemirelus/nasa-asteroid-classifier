@@ -14,6 +14,8 @@ def load_asteroid_dataset():
     return df
 
 
+
+
 def remove_unused_columns(df):
     columns_to_drop = [
         "Neo Reference ID",
@@ -39,6 +41,7 @@ def remove_unused_columns(df):
     ]
 
     df = df.drop(columns=columns_to_drop)
+    print(df.columns)
 
     return df
 
