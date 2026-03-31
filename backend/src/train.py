@@ -74,7 +74,7 @@ def train_dataset(X_train, X_test, y_train, y_test, scaler):
         metrics=["accuracy", tf.keras.metrics.Precision(), tf.keras.metrics.Recall()],
     )
     
-    model.fit(X_train, y_train, epoch = 50, batch_size = 32, class_weight={0: 1, 1: 5},
+    model.fit(X_train, y_train, epochs = 50, batch_size = 32, class_weight={0: 1, 1: 5},
     validation_split=0.2)
     
     model.evaluate(X_test, y_test)
