@@ -5,7 +5,6 @@ import tensorflow as tf
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from train import remove_unused_columns
 
 app = FastAPI()
 
@@ -15,6 +14,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+def remove_unused_columns(df):
+    columns_to_drop = [
+        "Neo Reference ID", "Name", "Est Dia in M(min)", "Est Dia in M(max)",
+        "Est Dia in Miles(min)", "Est Dia in Miles(max)", "Est Dia in Feet(min)",
+        "Est Dia in Feet(max)", "Close Approach Date", "Epoch Date Close Approach",
+        "Relative Velocity km per hr", "Miss Dist.(Astronomical)", "Miss Dist.(lunar)",
+        "Miss Dist.(miles)", "Orbit ID", "Orbit Determination Date", "Orbiting Body",
+        "Equinox", "Epoch Osculation", "Miles per hour",
+    ]
+    return df.drop(columns=columns_to_drop, errors="ignore")
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
