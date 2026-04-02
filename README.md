@@ -2,6 +2,8 @@
 
 A web app that fetches recent near-Earth objects from NASA and runs them through a trained ML model to predict whether they are potentially hazardous.
 
+**Live demo:** https://nasa-asteroid-classifier-production-5776.up.railway.app
+
 ![result_graph](assets/result_graph.png)
 ![val_result_graph](assets/val_result_graph.png)
 
