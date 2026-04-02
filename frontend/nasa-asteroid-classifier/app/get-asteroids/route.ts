@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const NASA_API_KEY = process.env.NASA_API_KEY ?? "DEMO_KEY";
+const PREDICT_API_URL = process.env.PREDICT_API_URL ?? "";
 const NASA_FEED_URL = "https://api.nasa.gov/neo/rest/v1/feed";
 const NASA_NEO_URL = "https://api.nasa.gov/neo/rest/v1/neo";
 
@@ -54,7 +55,7 @@ interface NasaDetailResponse {
 
 async function getPrediction(asteroidData: Record<string, unknown>) {
   const res = await fetch(
-    "https://nasa-asteroid-classifier-production.up.railway.app/predict",
+    PREDICT_API_URL,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
